@@ -1,0 +1,441 @@
+/* Portfolio Styles - Brutalist Geometric Aesthetic */
+
+:root {
+  /* Color Palette - Bold Black & White with Accent */
+  --black: #000000;
+  --white: #ffffff;
+  --gray-100: #f5f5f5;
+  --gray-200: #e0e0e0;
+  --gray-300: #cccccc;
+  --gray-800: #2a2a2a;
+  --accent: #ff4444;
+  
+  /* Typography */
+  --font-display: 'Space Mono', monospace;
+  --font-body: 'Courier New', monospace;
+  
+  /* Spacing */
+  --spacing-xs: 8px;
+  --spacing-sm: 16px;
+  --spacing-md: 32px;
+  --spacing-lg: 64px;
+  --spacing-xl: 128px;
+  
+  /* Layout */
+  --max-width: 1400px;
+  --section-padding: 120px 24px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--white);
+  color: var(--black);
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+/* Typography */
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+h1 {
+  font-size: clamp(3rem, 8vw, 6rem);
+  margin-bottom: var(--spacing-md);
+}
+
+h2 {
+  font-size: clamp(2rem, 5vw, 4rem);
+  margin-bottom: var(--spacing-md);
+}
+
+h3 {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  margin-bottom: var(--spacing-sm);
+}
+
+/* Navigation */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: var(--white);
+  border-bottom: 4px solid var(--black);
+  padding: var(--spacing-sm) var(--spacing-md);
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-decoration: none;
+  color: var(--black);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+}
+
+.nav-links {
+  display: flex;
+  gap: var(--spacing-md);
+  list-style: none;
+}
+
+.nav-links a {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  color: var(--black);
+  text-decoration: none;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border: 2px solid transparent;
+  transition: all 0.2s ease;
+}
+
+.nav-links a:hover {
+  border: 2px solid var(--black);
+  background: var(--black);
+  color: var(--white);
+}
+
+/* Sections */
+section {
+  min-height: 100vh;
+  padding: var(--section-padding);
+  padding-top: calc(80px + var(--spacing-lg));
+}
+
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+/* Home Section */
+#home {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  background: var(--white);
+}
+
+.home-content {
+  text-align: center;
+  margin-bottom: var(--spacing-xl);
+  animation: fadeInUp 1s ease-out;
+}
+
+.studio-name {
+  font-size: 1.2rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  margin-bottom: var(--spacing-sm);
+  opacity: 0.7;
+}
+
+.tagline {
+  font-size: 1.5rem;
+  margin-bottom: var(--spacing-md);
+  font-weight: 400;
+}
+
+.description {
+  max-width: 600px;
+  margin: 0 auto var(--spacing-lg);
+  font-size: 1.1rem;
+  line-height: 1.8;
+}
+
+.cta-button {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-size: 1rem;
+  padding: var(--spacing-sm) var(--spacing-md);
+  background: var(--black);
+  color: var(--white);
+  text-decoration: none;
+  border: 4px solid var(--black);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.cta-button:hover {
+  background: var(--white);
+  color: var(--black);
+  transform: translate(-4px, -4px);
+  box-shadow: 4px 4px 0 var(--black);
+}
+
+/* Game Canvas Container */
+.game-container {
+  margin-top: var(--spacing-lg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: fadeIn 1.5s ease-out 0.5s both;
+}
+
+.game-container h3 {
+  margin-bottom: var(--spacing-md);
+  text-align: center;
+}
+
+#spaceShooterCanvas {
+  border: 4px solid var(--black);
+  box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.1);
+  cursor: crosshair;
+}
+
+/* Games Section */
+#games {
+  background: var(--gray-100);
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: var(--spacing-xl);
+  position: relative;
+}
+
+.section-title::after {
+  content: '';
+  display: block;
+  width: 100px;
+  height: 4px;
+  background: var(--black);
+  margin: var(--spacing-md) auto 0;
+}
+
+.games-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--spacing-lg);
+}
+
+.game-card {
+  background: var(--white);
+  border: 4px solid var(--black);
+  overflow: hidden;
+  transition: all 0.3s ease;
+  animation: fadeInUp 0.6s ease-out both;
+}
+
+.game-card:nth-child(1) { animation-delay: 0.1s; }
+.game-card:nth-child(2) { animation-delay: 0.2s; }
+.game-card:nth-child(3) { animation-delay: 0.3s; }
+.game-card:nth-child(4) { animation-delay: 0.4s; }
+
+.game-card:hover {
+  transform: translate(-8px, -8px);
+  box-shadow: 8px 8px 0 var(--black);
+}
+
+.game-thumbnail {
+  width: 100%;
+  height: 250px;
+  background: var(--gray-200);
+  border-bottom: 4px solid var(--black);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  overflow: hidden;
+}
+
+.game-thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.game-info {
+  padding: var(--spacing-md);
+}
+
+.game-title {
+  font-size: 1.8rem;
+  margin-bottom: var(--spacing-sm);
+}
+
+.game-description {
+  margin-bottom: var(--spacing-md);
+  line-height: 1.6;
+}
+
+.game-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-xs);
+  margin-bottom: var(--spacing-sm);
+}
+
+.tag {
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  padding: 4px 12px;
+  background: var(--black);
+  color: var(--white);
+  border: 2px solid var(--black);
+}
+
+.status {
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  font-weight: 700;
+  display: inline-block;
+  margin-top: var(--spacing-sm);
+}
+
+.status.released { color: #00aa00; }
+.status.development { color: #ff8800; }
+.status.coming-soon { color: var(--accent); }
+
+/* Contact Section */
+#contact {
+  background: var(--black);
+  color: var(--white);
+}
+
+.contact-container {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+#contact .section-title::after {
+  background: var(--white);
+}
+
+.contact-description {
+  font-size: 1.2rem;
+  margin-bottom: var(--spacing-xl);
+  line-height: 1.8;
+}
+
+.contact-email {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  color: var(--white);
+  text-decoration: none;
+  border-bottom: 4px solid var(--white);
+  display: inline-block;
+  margin-bottom: var(--spacing-xl);
+  transition: all 0.3s ease;
+}
+
+.contact-email:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing-md);
+  flex-wrap: wrap;
+}
+
+.social-link {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  color: var(--white);
+  text-decoration: none;
+  padding: var(--spacing-sm) var(--spacing-md);
+  border: 3px solid var(--white);
+  transition: all 0.3s ease;
+}
+
+.social-link:hover {
+  background: var(--white);
+  color: var(--black);
+  transform: translate(-4px, -4px);
+  box-shadow: 4px 4px 0 var(--white);
+}
+
+/* Footer */
+footer {
+  background: var(--black);
+  color: var(--white);
+  text-align: center;
+  padding: var(--spacing-md);
+  border-top: 4px solid var(--white);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  nav {
+    flex-direction: column;
+    gap: var(--spacing-sm);
+  }
+  
+  .nav-links {
+    gap: var(--spacing-sm);
+  }
+  
+  section {
+    padding: var(--spacing-lg) var(--spacing-sm);
+    padding-top: calc(120px + var(--spacing-md));
+  }
+  
+  #spaceShooterCanvas {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  .games-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--white);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--black);
+  border: 2px solid var(--white);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--gray-800);
+}

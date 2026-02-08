@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" type="image/x-icon" href="assets/favicon.png" />
+  <title>Async Arcade - Indie Game Portfolio</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav>
+    <a href="#home" class="logo">
+        <!-- <span>◆</span> -->
+      <img src="assets/logo.svg" alt="Logo" style="width: 2rem; height: 2rem;">
+      <span id="nav-studio-name">PIXEL FORGE</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#home">HOME</a></li>
+      <li><a href="#games">GAMES</a></li>
+      <li><a href="#contact">CONTACT</a></li>
+    </ul>
+  </nav>
+
+  <!-- Home Section -->
+  <section id="home">
+    <div class="container">
+      <div class="home-content">
+        <div class="studio-name" id="studio-name-display">PIXEL FORGE STUDIOS</div>
+        <h1 id="home-title">Welcome to Pixel Forge</h1>
+        <p class="tagline" id="home-tagline">Where Ideas Become Adventures</p>
+        <p class="description" id="home-description">
+          We are a passionate indie game studio creating unique, handcrafted gaming experiences 
+          that push boundaries and tell compelling stories.
+        </p>
+        <a href="#games" class="cta-button" id="home-cta">Explore Our Games</a>
+      </div>
+
+      <!-- Space Shooter Game -->
+      <div class="game-container">
+        <h3>◆ TRY OUR MINI GAME ◆</h3>
+        <canvas id="spaceShooterCanvas"></canvas>
+      </div>
+    </div>
+  </section>
+
+  <!-- Games Section -->
+  <section id="games">
+    <div class="container">
+      <h2 class="section-title">Our Games</h2>
+      <div class="games-grid" id="games-grid">
+        <!-- Game cards will be populated by JavaScript -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact">
+    <div class="container contact-container">
+      <h2 class="section-title" id="contact-title">Let's Create Together</h2>
+      <p class="contact-description" id="contact-description">
+        Have a project in mind? Want to collaborate? We'd love to hear from you!
+      </p>
+      <a href="#" class="contact-email" id="contact-email">hello@pixelforge.studio</a>
+      <div class="social-links" id="social-links">
+        <!-- Social links will be populated by JavaScript -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2024 <span id="footer-studio-name">Pixel Forge Studios</span>. All rights reserved.</p>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="config.js"></script>
+  <script src="game.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
