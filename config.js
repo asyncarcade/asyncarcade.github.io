@@ -10,7 +10,7 @@ const CONFIG = {
     social: {
       //twitter: "https://twitter.com/pixelforge",
       //discord: "https://discord.gg/pixelforge",
-      playstore: "https://play.google.com/store/apps/dev?id=8683062841152944143",
+      //playstore: "https://play.google.com/store/apps/dev?id=8683062841152944143",
       //itch: "https://pixelforge.itch.io"
     }
   },
@@ -73,11 +73,11 @@ const CONFIG = {
     description: "Have a project in mind? Want to collaborate? We'd love to hear from you!",
     email: "asyncarcade@gmail.com",
     socials: [
-      {
-        name: "PlayStore",
-        icon: "🎮",
-        url: "https://play.google.com/store/apps/dev?id=8683062841152944143"
-      },
+//      {
+//        name: "PlayStore",
+//        icon: "🎮",
+//        url: "https://play.google.com/store/apps/dev?id=8683062841152944143"
+//      },
 //        name: "Twitter",
 //        icon: "🐦",
 //        url: "https://twitter.com/pixelforge"
