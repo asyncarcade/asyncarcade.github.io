@@ -135,7 +135,7 @@ section {
 
 .home-content {
   text-align: center;
-  margin-bottom: var(--spacing-xl);
+  margin-bottom: var(--spacing-lg);
   animation: fadeInUp 1s ease-out;
 }
 
@@ -182,11 +182,37 @@ section {
 
 /* Game Canvas Container */
 .game-container {
-  margin-top: var(--spacing-lg);
+  margin-top: var(--spacing-md);
   display: flex;
   flex-direction: column;
+  gap: var(--spacing-md);
   align-items: center;
+  justify-content: center;
   animation: fadeIn 1.5s ease-out 0.5s both;
+}
+
+.side-container {
+    display: flex;
+    flex-direction: row;
+    gap: var(--spacing-md);
+    align-items: center;
+}
+
+.white-text-on-black {
+    background: var(--black);
+    color: var(--white);
+    padding: 1rem;
+    border-radius: 0.5rem;
+}
+
+@media (min-width: 768px) {
+  .game-container {
+    flex-direction: row;    /* Horizontal on PC */
+  }
+
+  .side-container {
+    flex-direction: column;  /* Vertical on PC */
+  }
 }
 
 .game-container h3 {

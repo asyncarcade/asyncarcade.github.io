@@ -4,7 +4,7 @@ const CONFIG = {
   studio: {
     name: "Async Arcade",
     tagline: "Crafting Unforgettable Indie Experiences",
-    description: "We are a passionate indie game studio creating unique, handcrafted gaming experiences that push boundaries and make games all about fun.",
+    description: "We make games in the classic way, the best way.",
     logo: "assets/logo.svg", // Path to your logo
     email: "asyncarcade@gmail.com",
     social: {
@@ -25,16 +25,16 @@ const CONFIG = {
 
   // Games Portfolio
   games: [
-    {
-      id: 1,
-      title: "Endless",
-      description: "Endless flight arcade with nail-biting gameplay on dynamic environments.",
-      thumbnail: "assets/endless.png",
-      status: "Released",
-      platforms: ["PlayStore"],
-      releaseDate: "2025",
-      tags: ["Adventure", "Flight", "Arcade"]
-    },
+//    {
+//      id: 1,
+//      title: "Endless",
+//      description: "Endless flight arcade with nail-biting gameplay on dynamic environments.",
+//      thumbnail: "assets/endless.png",
+//      status: "Released",
+//      platforms: ["PlayStore"],
+//      releaseDate: "2025",
+//      tags: ["Adventure", "Flight", "Arcade"]
+//    },
     {
       id: 2,
       title: "Mini Cricket",

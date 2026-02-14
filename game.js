@@ -35,15 +35,28 @@ class SpaceShooter {
   }
   
   init() {
-    // Mouse movement
-    this.canvas.addEventListener('mousemove', (e) => {
-      const rect = this.canvas.getBoundingClientRect();
-      this.mouseX = e.clientX - rect.left;
-    });
-    
-    // Auto-start game
-    this.gameRunning = true;
-    this.gameLoop();
+      // Mouse movement
+      //this.canvas.addEventListener('mousemove', (e) => {
+          //  const rect = this.canvas.getBoundingClientRect();
+          //  this.mouseX = e.clientX - rect.left;
+          //    console.log(this.mouseX + " " + this.player.x + " " + rect.left + " " + rect.right);
+          //});
+
+      //  console.log("Canvas w: " + this.canvas.width + " " + this.player.width);
+
+      this.canvas.addEventListener('mousemove', (e) => {
+          const rect = this.canvas.getBoundingClientRect();
+
+          const scaleX = this.canvas.width / rect.width;
+          const scaleY = this.canvas.height / rect.height;
+
+          this.mouseX = (e.clientX - rect.left) * scaleX;
+      });
+
+
+      // Auto-start game
+      this.gameRunning = true;
+      this.gameLoop();
   }
   
   gameLoop() {
