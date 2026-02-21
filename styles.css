@@ -432,6 +432,14 @@ footer {
   .nav-links {
     gap: var(--spacing-sm);
   }
+
+  .contact-email {
+    font-size: 1.2rem;
+  }
+
+  .section-title {
+      font-size: 1.5rem;
+  }
   
   section {
     padding: var(--spacing-lg) var(--spacing-sm);

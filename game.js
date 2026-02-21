@@ -29,6 +29,7 @@ class SpaceShooter {
     
     this.frameCount = 0;
     this.lastShootTime = 0;
+
     this.shootCooldown = 15; // frames
     
     this.init();
@@ -51,6 +52,14 @@ class SpaceShooter {
           const scaleY = this.canvas.height / rect.height;
 
           this.mouseX = (e.clientX - rect.left) * scaleX;
+      });
+
+      this.canvas.addEventListener('mousedown', () => {
+          this.shootCooldown = 7;
+      });
+
+      this.canvas.addEventListener('mouseup', () => {
+          this.shootCooldown = 15;
       });
 
 
