@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>DASHBLITZ</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&display=swap');
+
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+html, body {
+  width:100%; height:100%;
+  background:#07070e;
+  display:flex; align-items:center; justify-content:center;
+  overflow:hidden;
+  font-family:'Share Tech Mono', monospace;
+  color:#fff;
+  touch-action:none;
+}
+
+/* ── Shell & layout ─────────── */
+#shell {
+  position:relative;
+  display:flex; flex-direction:column; align-items:center;
+}
+
+/* ── HUD TOP ─────────────────── */
+#hud-top {
+  width:100%;
+  display:flex; justify-content:space-between; align-items:flex-end;
+  padding:0 2px 5px;
+}
+.hcol { display:flex; flex-direction:column; align-items:center; gap:2px; min-width:72px; }
+.hlbl { font-size:8px; letter-spacing:3px; color:#2a2a44; text-transform:uppercase; }
+.hval { font-family:'Orbitron',monospace; font-size:22px; font-weight:900; color:#ffe033; text-shadow:0 0 16px rgba(255,224,51,.85); line-height:1; }
+.hval-sm { font-family:'Orbitron',monospace; font-size:14px; font-weight:700; color:#ffe033; line-height:1; }
+
+/* bars */
+.barwrap { width:72px; height:7px; background:#0c0c1e; border-radius:4px; overflow:hidden; border:1px solid #1a1a30; }
+.barfill { height:100%; border-radius:4px; transition:width .07s, background .2s; }
+#hp-fill   { background:hsl(90,90%,50%); box-shadow:0 0 7px hsl(90,90%,50%); }
+#dash-fill { background:linear-gradient(90deg,#3399ff,#88ddff); box-shadow:0 0 7px #3399ff; }
+
+/* slow indicator */
+#hud-slow {
+  font-size:8px; letter-spacing:2px; color:#9966ff;
+  opacity:0; transition:opacity .2s;
+  text-shadow:0 0 8px #9966ff;
+}
+
+/* timer ring */
+#tcol { flex:1; align-items:center; }
+#tring { position:relative; width:58px; height:58px; }
+#tring svg { position:absolute; top:0; left:0; }
+#timer-text {
+  position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
+  font-family:'Orbitron',monospace; font-size:15px; font-weight:700;
+  color:#ffe033; text-shadow:0 0 10px rgba(255,224,51,.8);
+}
+/* wave display */
+#hud-wave-wrap { display:none; flex-direction:column; align-items:center; gap:2px; }
+#hud-wave-num  { font-family:'Orbitron',monospace; font-size:22px; font-weight:900; color:#ff8844; text-shadow:0 0 14px rgba(255,136,68,.8); line-height:1; }
+
+/* ── HUD BOTTOM ───────────────── */
+#hud-bot {
+  width:100%; display:flex; justify-content:space-between; align-items:center;
+  padding:4px 2px 0;
+}
+#hud-seed    { font-size:8px; color:#1e1e30; letter-spacing:2px; }
+#hud-enemies { font-size:8px; color:#2a2a44; letter-spacing:2px; }
+
+/* ── Canvas ───────────────────── */
+canvas {
+  display:block; cursor:crosshair;
+  border:1px solid #10102a;
+  box-shadow:0 0 60px rgba(0,0,0,.96), 0 0 20px rgba(255,224,51,.03);
+}
+@keyframes pulseRed { 0%,100%{box-shadow:0 0 0 0 rgba(255,40,40,0)} 50%{box-shadow:0 0 0 10px rgba(255,40,40,.25)} }
+canvas.time-crit { animation:pulseRed .44s infinite; }
+
+/* ── Dash button ─────────────── */
+#dash-btn {
+  position:absolute; bottom:30px; right:8px;
+  width:68px; height:68px; border-radius:50%;
+  background:rgba(30,80,200,.1); border:2px solid #3355ee;
+  color:#3355ee; font-family:'Orbitron',monospace; font-size:10px; font-weight:700; letter-spacing:1px;
+  cursor:pointer; box-shadow:0 0 16px rgba(50,80,255,.18);
+  transition:background .1s, box-shadow .1s;
+  z-index:8; user-select:none;
+  display:flex; align-items:center; justify-content:center;
+}
+#dash-btn:active, #dash-btn.pr {
+  background:rgba(51,100,255,.35);
+  box-shadow:0 0 32px rgba(51,100,255,.55);
+}
+
+/* ── Overlay ─────────────────── */
+#overlay {
+  position:absolute; inset:0;
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  background:rgba(3,3,10,.95); backdrop-filter:blur(6px);
+  z-index:20; padding:16px; text-align:center;
+}
+#overlay.hidden { display:none; }
+
+.ot {
+  font-family:'Orbitron',monospace;
+  font-size:clamp(24px,7vw,44px); font-weight:900; letter-spacing:6px;
+  color:#ffe033;
+  text-shadow:0 0 36px rgba(255,224,51,.9), 0 0 70px rgba(255,224,51,.3);
+  margin-bottom:4px;
+}
+.ot.red  { color:#ff4444; text-shadow:0 0 36px rgba(255,68,68,.9); }
+.ot.cyan { color:#00ffaa; text-shadow:0 0 36px rgba(0,255,170,.9); }
+.os { font-size:8px; letter-spacing:4px; color:#252540; margin-bottom:20px; }
+
+/* Mode buttons */
+.mode-row { display:flex; gap:12px; margin-bottom:20px; }
+.mbtn {
+  font-family:'Orbitron',monospace; font-size:11px; font-weight:700; letter-spacing:3px;
+  padding:10px 20px; background:transparent; cursor:pointer; text-transform:uppercase;
+  position:relative; overflow:hidden; transition:color .18s;
+}
+.mbtn.level { border:2px solid #ffe033; color:#ffe033; }
+.mbtn.arcade { border:2px solid #ff8844; color:#ff8844; }
+.mbtn::before { content:''; position:absolute; inset:0; transform:scaleX(0); transform-origin:left; transition:transform .18s; z-index:-1; }
+.mbtn.level::before  { background:#ffe033; }
+.mbtn.arcade::before { background:#ff8844; }
+.mbtn:hover { color:#07070e; }
+.mbtn:hover::before { transform:scaleX(1); }
+.mbtn.active-mode { color:#07070e; }
+.mbtn.level.active-mode::before  { transform:scaleX(1); }
+.mbtn.arcade.active-mode::before { transform:scaleX(1); }
+
+.oi { font-size:10px; color:#444466; line-height:2; margin-bottom:14px; letter-spacing:.4px; }
+.oi b { color:#ffe033; } .oi .s { color:#ff8844; } .oi .g { color:#00ffaa; }
+
+/* Enemy legend */
+.legend { display:flex; flex-wrap:wrap; justify-content:center; gap:6px 12px; margin-bottom:16px; }
+.litem { font-size:8px; color:#333355; letter-spacing:1px; display:flex; align-items:center; gap:5px; }
+.ldot { width:10px; height:10px; border-radius:50%; flex-shrink:0; }
+
+/* Score display */
+.bscore { font-family:'Orbitron',monospace; font-size:40px; font-weight:900; color:#ffe033; text-shadow:0 0 28px rgba(255,224,51,.9); line-height:1; }
+.bslbl  { font-size:8px; letter-spacing:4px; color:#222240; margin:4px 0 14px; }
+.stat   { font-size:8px; color:#333355; letter-spacing:2px; margin-bottom:4px; }
+
+/* Seed input */
+.srow { display:flex; gap:8px; align-items:center; margin-bottom:14px; }
+.srow label { font-size:8px; letter-spacing:3px; color:#222240; }
+#sinput {
+  background:#0a0a1c; border:1px solid #1a1a38; color:#ffe033;
+  font-family:'Share Tech Mono',monospace; font-size:12px;
+  padding:5px 10px; width:90px; outline:none; letter-spacing:2px;
+}
+#sinput:focus { border-color:#ffe033; }
+
+.btn {
+  font-family:'Orbitron',monospace; font-size:12px; font-weight:700; letter-spacing:4px;
+  padding:11px 32px; background:transparent; border:2px solid #ffe033;
+  color:#ffe033; cursor:pointer; text-transform:uppercase;
+  position:relative; overflow:hidden; margin-top:6px; transition:color .18s;
+}
+.btn::before { content:''; position:absolute; inset:0; background:#ffe033; transform:scaleX(0); transform-origin:left; transition:transform .18s; z-index:-1; }
+.btn:hover { color:#07070e; }
+.btn:hover::before { transform:scaleX(1); }
+</style>
+</head>
+<body>
+
+<div id="shell">
+  <!-- HUD TOP -->
+  <div id="hud-top">
+    <div class="hcol">
+      <div class="hlbl">Level</div>
+      <div class="hval" id="hud-level">01</div>
+      <div class="hlbl" style="margin-top:5px">HP</div>
+      <div class="barwrap"><div class="barfill" id="hp-fill" style="width:100%"></div></div>
+      <div class="hlbl" style="margin-top:3px">Dash</div>
+      <div class="barwrap"><div class="barfill" id="dash-fill" style="width:100%"></div></div>
+      <div id="hud-slow">◈ SLOWED</div>
+    </div>
+
+    <div class="hcol" id="tcol">
+      <!-- Level mode: timer ring -->
+      <div id="hud-timer-wrap" style="display:flex;flex-direction:column;align-items:center;gap:2px">
+        <div class="hlbl">Time</div>
+        <div id="tring">
+          <svg width="58" height="58" viewBox="0 0 58 58">
+            <circle cx="29" cy="29" r="24" fill="none" stroke="#0d0d20" stroke-width="4.5"/>
+            <circle id="timer-arc" cx="29" cy="29" r="24" fill="none" stroke="#ffe033" stroke-width="4.5"
+              stroke-dasharray="150.8" stroke-dashoffset="0" stroke-linecap="round"
+              transform="rotate(-90 29 29)"
+              style="transition:stroke-dashoffset .14s,stroke .14s;filter:drop-shadow(0 0 4px #ffe033)"/>
+          </svg>
+          <div id="timer-text">--</div>
+        </div>
+      </div>
+      <!-- Arcade mode: wave counter -->
+      <div id="hud-wave-wrap">
+        <div class="hlbl">Wave</div>
+        <div id="hud-wave-num">1</div>
+      </div>
+    </div>
+
+    <div class="hcol" style="align-items:flex-end">
+      <div class="hlbl">Score</div>
+      <div class="hval" id="hud-score">0</div>
+      <div class="hlbl" style="margin-top:5px">Kills</div>
+      <div class="hval-sm" id="hud-kills">0</div>
+    </div>
+  </div>
+
+  <canvas id="canvas"></canvas>
+
+  <div id="hud-bot">
+    <div id="hud-seed">SEED: <span id="hud-seed-val">----</span></div>
+    <div id="hud-enemies"></div>
+  </div>
+
+  <!-- MAIN OVERLAY -->
+  <div id="overlay">
+    <div class="ot" id="ov-title">DASHBLITZ</div>
+    <div class="os" id="ov-sub">seeded · portrait · dash-action</div>
+
+    <div id="ov-main">
+      <!-- Mode selector -->
+      <div class="mode-row">
+        <button class="mbtn level active-mode" id="btn-level-mode">LEVEL</button>
+        <button class="mbtn arcade" id="btn-arcade-mode">ARCADE</button>
+      </div>
+
+      <div class="oi">
+        <b>DRAG</b> to move &nbsp;·&nbsp; <b>SPACE</b> / button to dash<br>
+        Dash through enemies to destroy them<br>
+        <span class="s">Armored</span> enemies need wall slams to kill<br>
+        <b class="g">LEVEL:</b> reach exit after killing all enemies<br>
+        <b style="color:#ff8844">ARCADE:</b> survive endless waves · HP regens
+      </div>
+
+      <div class="legend">
+        <div class="litem"><div class="ldot" style="background:#ee2222"></div>BRUTE</div>
+        <div class="litem"><div class="ldot" style="background:#dd2200;width:7px;height:7px"></div>RUNNER</div>
+        <div class="litem"><div class="ldot" style="background:#ff6622;width:16px;height:16px"></div>TANK ★</div>
+        <div class="litem"><div class="ldot" style="background:#9933ff"></div>GHOST ↓spd</div>
+        <div class="litem"><div class="ldot" style="background:#44bb00"></div>SLIMER ↓spd</div>
+      </div>
+
+      <div class="srow">
+        <label>SEED</label>
+        <input id="sinput" type="text" placeholder="random" maxlength="14" spellcheck="false"/>
+      </div>
+
+      <button class="btn" id="startbtn">START GAME</button>
+    </div>
+
+    <!-- Game over panel (hidden initially) -->
+    <div id="ov-gameover" style="display:none">
+      <div class="bscore" id="go-score">0</div>
+      <div class="bslbl">FINAL SCORE</div>
+      <div class="stat" id="go-stats"></div>
+      <div class="srow" style="margin-top:14px">
+        <label>SEED</label>
+        <input id="sinput-go" type="text" maxlength="14" spellcheck="false"/>
+      </div>
+      <button class="btn" id="replaybtn">PLAY AGAIN</button>
+    </div>
+  </div>
+
+  <button id="dash-btn">DASH</button>
+</div>
+
+<!-- ── Scripts (load order matters) ── -->
+<script src="js/utils.js"></script>
+<script src="js/audio.js"></script>
+<script src="js/particles.js"></script>
+<script src="js/camera.js"></script>
+<script src="js/level.js"></script>
+<script src="js/player.js"></script>
+<script src="js/enemy.js"></script>
+<script src="js/hud.js"></script>
+<script src="js/game.js"></script>
+
+<script>
+// ═══════════════════════════════════════════
+// BOOTSTRAP — wires UI to game engine
+// ═══════════════════════════════════════════
+
+const canvas = document.getElementById('canvas');
+let game = null;
+let selectedMode = 'level';
+
+// Resize canvas
+function doResize() { Game.resize(canvas); }
+doResize();
+window.addEventListener('resize', doResize);
+
+// Mode buttons
+document.getElementById('btn-level-mode').addEventListener('click', () => {
+  selectedMode = 'level';
+  document.getElementById('btn-level-mode').classList.add('active-mode');
+  document.getElementById('btn-arcade-mode').classList.remove('active-mode');
+});
+document.getElementById('btn-arcade-mode').addEventListener('click', () => {
+  selectedMode = 'arcade';
+  document.getElementById('btn-arcade-mode').classList.add('active-mode');
+  document.getElementById('btn-level-mode').classList.remove('active-mode');
+});
+
+// Start
+document.getElementById('startbtn').addEventListener('click', () => {
+  const sv   = (document.getElementById('sinput').value || '').trim();
+  const seed = sv || String(Math.floor(Math.random() * 99));
+  bootGame(seed, selectedMode);
+});
+
+// Replay
+document.getElementById('replaybtn').addEventListener('click', () => {
+  const sv   = (document.getElementById('sinput-go').value || '').trim();
+  const seed = sv || String(Math.floor(Math.random() * 99));
+  bootGame(seed, selectedMode);
+});
+
+function bootGame(seed, mode) {
+  Audio.init();
+  document.getElementById('overlay').classList.add('hidden');
+  canvas.classList.remove('time-crit');
+
+  if (game) { game.running = false; }
+  game = new Game(canvas, mode, seed);
+
+  document.getElementById('hud-seed-val').textContent = seed;
+  document.getElementById('hud-level').textContent    = '01';
+  document.getElementById('hud-score').textContent    = '0';
+  document.getElementById('hud-kills').textContent    = '0';
+
+  game.start();
+}
+
+// Called by game engine when player dies
+function onGameOver(reason, g) {
+  const ov = document.getElementById('overlay');
+
+  // Show game over content
+  document.getElementById('ov-main').style.display     = 'none';
+  document.getElementById('ov-gameover').style.display = 'block';
+
+  const titleEl = document.getElementById('ov-title');
+  titleEl.textContent  = reason;
+  titleEl.className    = 'ot red';
+
+  const subEl = document.getElementById('ov-sub');
+  subEl.textContent = g.mode === 'arcade' ? 'arcade run ended' : 'run terminated';
+
+  document.getElementById('go-score').textContent = g.score.toLocaleString();
+  document.getElementById('go-stats').textContent =
+    `LEVEL ${g.levelNum}  ·  ${g.kills} KILLS  ·  SEED ${g.seed}`;
+  document.getElementById('sinput-go').value = g.seed;
+
+  ov.classList.remove('hidden');
+}
+
+// Prevent space from scrolling page
+window.addEventListener('keydown', e => { if (e.code === 'Space') e.preventDefault(); }, { passive: false });
+
+// Resume audio context on first interaction (browser policy)
+document.addEventListener('pointerdown', () => { Audio.resume(); }, { once: false });
+</script>
+</body>
+</html>
