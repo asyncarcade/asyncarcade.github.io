@@ -51,7 +51,13 @@ const Game = (() => {
   }
 
   // ── Game flow ──────────────────────────────────────
+  // Reload the page on every (re)start for a guaranteed clean state.
   function startGame() {
+    window.location.reload();
+  }
+
+  // Called once automatically on first load to begin the actual session.
+  function beginPlay() {
     hide('start-screen');
     hide('gameover-screen');
     hide('pause-overlay');
@@ -63,12 +69,16 @@ const Game = (() => {
     Powerups.reset();
     Particles.reset();
 
+    Camera.followPlayer(Player.getWorldY());
+
     State.parachuteOpen = true;
     updateParaIndicator();
     updatePowerupHUD();
     updateScoreHUD();
     document.getElementById('best-value').textContent = State.bestScore + 'm';
+    document.getElementById('game-msg').style.opacity = '0';
 
+    lastTime = 0;
     State.phase = 'playing';
     Audio.unlock();
     Audio.startDrone();
@@ -126,6 +136,13 @@ const Game = (() => {
       if (State.energyTimer <= 0) State.energyMode = false;
     }
 
+    // Update player position first
+    Player.update(dt);
+
+    // Camera follows player immediately after player moves
+    // so all screen-Y conversions this frame are accurate
+    Camera.followPlayer(Player.getWorldY());
+
     // Score = world distance in metres
     const metres = Math.floor(Camera.getWorldY() / 60);
     State.setScore(metres);
@@ -145,14 +162,12 @@ const Game = (() => {
       Powerups.spawn();
     }
 
-    // Update entities
-    Player.update(dt);
-    Camera.followPlayer(Player.getWorldY());
+    // Update world entities
     Obstacles.update(dt);
     Powerups.update(dt);
     Particles.update(dt);
 
-    // Collision checks
+    // Collision checks — camera is in sync so screen-Y is correct
     Obstacles.checkCollisions();
     Obstacles.checkDashProximity();
 
@@ -173,7 +188,9 @@ const Game = (() => {
 
   // ── Main loop ──────────────────────────────────────
   function loop(ts) {
-    const dt = Math.min((ts - lastTime) / 1000, 0.05);
+    // When lastTime is 0 (fresh start or restart), skip the first dt calculation
+    // to avoid a huge spike from accumulated idle time
+    const dt = lastTime === 0 ? 0 : Math.min((ts - lastTime) / 1000, 0.05);
     lastTime = ts;
 
     if (State.phase === 'playing') update(dt);
@@ -184,11 +201,13 @@ const Game = (() => {
 
   // ── Wire up UI buttons ─────────────────────────────
   function initUI() {
-    document.getElementById('start-btn') .addEventListener('click', startGame);
+    // "DIVE IN" on the start screen begins the session directly (no reload needed on first launch)
+    document.getElementById('start-btn') .addEventListener('click', beginPlay);
+    // Retry / menu always reload for a clean slate
     document.getElementById('retry-btn') .addEventListener('click', startGame);
-    document.getElementById('menu-btn')  .addEventListener('click', goToMenu);
+    document.getElementById('menu-btn')  .addEventListener('click', startGame);
     document.getElementById('resume-btn').addEventListener('click', resumeGame);
-    document.getElementById('quit-btn')  .addEventListener('click', goToMenu);
+    document.getElementById('quit-btn')  .addEventListener('click', startGame);
     document.getElementById('pause-btn') .addEventListener('click', () => {
       if (State.phase === 'playing') togglePause();
     });
@@ -205,7 +224,7 @@ const Game = (() => {
     requestAnimationFrame(loop);
   }
 
-  return { init, startGame, triggerGameOver, togglePause, showMsg, updatePowerupHUD };
+  return { init, startGame, beginPlay, triggerGameOver, togglePause, showMsg, updatePowerupHUD };
 })();
 
 // Boot on DOM ready

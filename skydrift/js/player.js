@@ -41,7 +41,8 @@ const Player = (() => {
 
   function init() {
     x      = W() / 2;
-    worldY = Camera.toWorldY(getCanvas().height * 0.28); // start at camera target
+    // Camera is already reset to 0, so player starts at screen Y = 28% of canvas
+    worldY = getCanvas().height * 0.28;
     vx     = 0; angle = 0;
     shield = false;
     rocketActive = false; rocketTimer = 0;

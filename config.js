@@ -24,40 +24,51 @@ const CONFIG = {
     },
 
 
-  // Games Portfolio
+    // Games Portfolio
     games: [
-  {
-    id: 2,
-    title: "Dash Blitz",
-    description: "DashBlitz is an arcade fun dash-to-kill game. It is a survival game where you get the privilege of completing levels or play endlessly to see how far you can get without dying. Have fun and sharpen your dashing skills while passing your time.",
-    thumbnail: "assets/dashblitz.png",
-    status: "Released on Web",
-    platforms: ["Web (Async Arcade)"],
-    releaseDate: "2026",
-    url: "/dashblitz",
-    tags: ["Casual", "Arcade", "Survival"]
-  },
-  {
-    id: 2,
-    title: "Cricket Cube",
-    description: "Cricket Cube is a fast-paced top-down cricket game featuring casual yet thrilling skill-based gameplay. Swipe to play dynamic cricket shots across the ground or aim precisely to knock down the stumps in action-packed challenges. With intuitive controls and competitive mechanics, every move tests your timing, reflexes, and strategic decision-making.",
-    thumbnail: "assets/minicricket.png",
-    status: "In Development",
-    platforms: ["PlayStore"],
-    releaseDate: "2026",
-    tags: ["Sports", "Cricket", "Casual"]
-  },
-  {
-    id: 3,
-    title: "Bounce Adventure : Pogo Mania",
-    description: "Bounce Adventure: Pogo Mania is a fun and addictive vertical platformer focused on mastering jump timing and directional control. Carefully time each bounce, adjust your movement mid-air, and land perfectly on platforms as you climb higher and higher. Precision, rhythm, and smart positioning are the keys to reaching the top in this exciting pogo-powered adventure.",
-    thumbnail: "assets/bounce.png",
-    status: "In Development",
-    platforms: ["PlayStore"],
-    releaseDate: "2026",
-    tags: ["Arcade", "Platformer", "Casual"]
-  },
-],
+        {
+            id: 2,
+            title: "Dash Blitz",
+            description: "DashBlitz is an arcade fun dash-to-kill game. It is a survival game where you get the privilege of completing levels or play endlessly to see how far you can get without dying. Have fun and sharpen your dashing skills while passing your time.",
+            thumbnail: "assets/dashblitz.png",
+            status: "Released on Web",
+            platforms: ["Web (Async Arcade)"],
+            releaseDate: "2026",
+            url: "/dashblitz",
+            tags: ["Casual", "Arcade", "Survival"]
+        },
+        {
+            "id": 3,
+            "title": "SkyDrift",
+            "description": "SkyDrift is an arcade skydiving survival game. Control your falling diver by toggling your parachute and drifting sideways to dodge a relentless gauntlet of obstacles — spinning rocks, sliding doors, firing cannons, and deadly lasers. Collect powerups like shields, rockets, and dash charges to survive longer and fall further. How deep can you go?",
+            "thumbnail": "assets/skydrift.png",
+            "status": "Released on Web",
+            "platforms": ["Web (Async Arcade)"],
+            "releaseDate": "2026",
+            "url": "/skydrift",
+            "tags": ["Casual", "Arcade", "Survival"]
+        },
+        {
+            id: 2,
+            title: "Cricket Cube",
+            description: "Cricket Cube is a fast-paced top-down cricket game featuring casual yet thrilling skill-based gameplay. Swipe to play dynamic cricket shots across the ground or aim precisely to knock down the stumps in action-packed challenges. With intuitive controls and competitive mechanics, every move tests your timing, reflexes, and strategic decision-making.",
+            thumbnail: "assets/minicricket.png",
+            status: "In Development",
+            platforms: ["PlayStore"],
+            releaseDate: "2026",
+            tags: ["Sports", "Cricket", "Casual"]
+        },
+        {
+            id: 3,
+            title: "Bounce Adventure : Pogo Mania",
+            description: "Bounce Adventure: Pogo Mania is a fun and addictive vertical platformer focused on mastering jump timing and directional control. Carefully time each bounce, adjust your movement mid-air, and land perfectly on platforms as you climb higher and higher. Precision, rhythm, and smart positioning are the keys to reaching the top in this exciting pogo-powered adventure.",
+            thumbnail: "assets/bounce.png",
+            status: "In Development",
+            platforms: ["PlayStore"],
+            releaseDate: "2026",
+            tags: ["Arcade", "Platformer", "Casual"]
+        },
+    ],
 
 
     // Contact Information

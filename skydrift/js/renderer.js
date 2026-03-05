@@ -5,7 +5,7 @@
 const Renderer = (() => {
 
   // Cloud and star data (screen-relative, parallax with camera)
-  const clouds = Array.from({ length: 28 }, () => ({
+  const clouds = Array.from({ length: 6 }, () => ({
     x:     Math.random() * 500,
     baseY: Math.random() * 400,   // offset from a reference point
     w:     55 + Math.random() * 110,
