@@ -49,6 +49,17 @@ const CONFIG = {
             tags: ["Casual", "Arcade", "Survival"]
         },
         {
+            id: 1,
+            title: "Shoot.io",
+            description: "Shoot.io is a portrait-mode space shooter built for web and mobile. Pilot a glowing ship through waves of escalating alien threats — fast-moving triangles, armored hexagons, massive diamonds, and screen-filling boss stars — by dragging left and right to dodge and reposition. Your ship fires automatically; collect powerups to multiply your fire rate, gain shields, earn extra lives, or arm yourself with area-damage bombs. Enemies grow faster and tougher with every wave. Synthesized sound effects, particle explosions with shockwave rings, and a soft nebula backdrop make every kill feel visceral. How long can you hold the cosmos?",
+            thumbnail: "assets/shootio.png",
+            status: "Released on Web",
+            platforms: ["Web", "Mobile"],
+            releaseDate: "2026",
+            url: "https://asyncarcade.github.io/shoot.io",
+            tags: ["Shooter", "Arcade", "Survival", "Mobile"]
+        },
+        {
             id: 3,
             title: "Grid.io",
             description: "Grid.io is a browser-based multiplayer territory game inspired by Paper.io. Control your colored player across a vast 2D grid arena, leaving trails to carve out loops and claim enclosed territory. Outmaneuver 7 AI rivals — each running intelligent expansion routines — by cutting off their trails while protecting your own. Captures trigger satisfying area-flood animations and synthesized sound effects. How much of the grid can you dominate?",
