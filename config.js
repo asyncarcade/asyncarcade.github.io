@@ -49,7 +49,7 @@ const CONFIG = {
             tags: ["Casual", "Arcade", "Survival"]
         },
         {
-            id: 1,
+            id: 3,
             title: "Shoot.io",
             description: "Shoot.io is a portrait-mode space shooter built for web and mobile. Pilot a glowing ship through waves of escalating alien threats — fast-moving triangles, armored hexagons, massive diamonds, and screen-filling boss stars — by dragging left and right to dodge and reposition. Your ship fires automatically; collect powerups to multiply your fire rate, gain shields, earn extra lives, or arm yourself with area-damage bombs. Enemies grow faster and tougher with every wave. Synthesized sound effects, particle explosions with shockwave rings, and a soft nebula backdrop make every kill feel visceral. How long can you hold the cosmos?",
             thumbnail: "assets/shootio.png",
@@ -60,7 +60,7 @@ const CONFIG = {
             tags: ["Shooter", "Arcade", "Survival", "Mobile"]
         },
         {
-            id: 3,
+            id: 4,
             title: "Grid.io",
             description: "Grid.io is a browser-based multiplayer territory game inspired by Paper.io. Control your colored player across a vast 2D grid arena, leaving trails to carve out loops and claim enclosed territory. Outmaneuver 7 AI rivals — each running intelligent expansion routines — by cutting off their trails while protecting your own. Captures trigger satisfying area-flood animations and synthesized sound effects. How much of the grid can you dominate?",
             thumbnail: "assets/gridio.png",
@@ -71,17 +71,28 @@ const CONFIG = {
             tags: ["Multiplayer", "Arcade", "Strategy", "Survival"]
         },
         {
-            id: 4,
-            title: "Cricket Cube",
-            description: "Cricket Cube is a fast-paced top-down cricket game featuring casual yet thrilling skill-based gameplay. Swipe to play dynamic cricket shots across the ground or aim precisely to knock down the stumps in action-packed challenges. With intuitive controls and competitive mechanics, every move tests your timing, reflexes, and strategic decision-making.",
-            thumbnail: "assets/minicricket.png",
-            status: "In Development",
-            platforms: ["PlayStore"],
+            id: 5,
+            title: "Asteroid Typer",
+            description: "Asteroid Typer is a browser-based typing game where waves of procedurally spawned asteroids — sized proportionally to their words — hurtle toward your ship. Type each word to lock on, fire bullets with every keystroke, and detonate rocks on completion. Outpace an escalating difficulty curve across 10 sectors as spawn rates and word complexity ramp from calm drifts to frantic swarms. Four powerups reward sharp typing: Time Warp slows the field, Solar Flare blasts everything skyward, Breaker splits the largest threat, and Shield restores hull integrity. A dynamic nebula shifts from cool blue to burning red as the pressure mounts.",
+            thumbnail: "assets/asteroidtyper.png",
+            status: "Released on Web",
+            platforms: ["Web"],
             releaseDate: "2026",
-            tags: ["Sports", "Cricket", "Casual"]
+            url: "https://asyncarcade.github.io/asteroid-typer",
+            tags: ["Typing", "Arcade", "Action", "Survival"]
         },
         {
-            id: 5,
+            id: 6,
+                title: "Cricket Cube",
+                description: "Cricket Cube is a fast-paced top-down cricket game featuring casual yet thrilling skill-based gameplay. Swipe to play dynamic cricket shots across the ground or aim precisely to knock down the stumps in action-packed challenges. With intuitive controls and competitive mechanics, every move tests your timing, reflexes, and strategic decision-making.",
+                thumbnail: "assets/minicricket.png",
+                status: "In Development",
+                platforms: ["PlayStore"],
+                releaseDate: "2026",
+                tags: ["Sports", "Cricket", "Casual"]
+        },
+        {
+            id: 7,
             title: "Bounce Adventure : Pogo Mania",
             description: "Bounce Adventure: Pogo Mania is a fun and addictive vertical platformer focused on mastering jump timing and directional control. Carefully time each bounce, adjust your movement mid-air, and land perfectly on platforms as you climb higher and higher. Precision, rhythm, and smart positioning are the keys to reaching the top in this exciting pogo-powered adventure.",
             thumbnail: "assets/bounce.png",
