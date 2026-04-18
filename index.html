@@ -4,128 +4,431 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="shortcut icon" type="image/x-icon" href="assets/favicon.png" />
-  <title>Async Arcade - Indie Game Portfolio</title>
+  <title>Async Arcade - Indie Game Studio</title>
   <link rel="stylesheet" href="styles.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Bebas+Neue&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 
   <!-- Ads -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7203042400179866"
-     crossorigin="anonymous"></script>
-
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7203042400179866" crossorigin="anonymous"></script>
 </head>
-<body style="width: 100%;">
+<body>
+
+  <!-- Noise overlay -->
+  <div class="noise-overlay"></div>
+
   <!-- Navigation -->
-  <nav>
+  <nav id="navbar">
     <a href="#home" class="logo">
-        <!-- <span>◆</span> -->
-      <img src="assets/logo.svg" alt="Logo" style="width: 2rem; height: 2rem;">
-      <span id="nav-studio-name">Async Arcade</span>
+      <img src="assets/logo.svg" alt="Logo" class="logo-img">
+      <span id="nav-studio-name">ASYNC ARCADE</span>
     </a>
     <ul class="nav-links">
       <li><a href="#home">HOME</a></li>
+      <li><a href="#featured">FEATURED</a></li>
       <li><a href="#games">GAMES</a></li>
+      <li><a href="#devblog">DEV BLOG</a></li>
       <li><a href="#contact">CONTACT</a></li>
     </ul>
+    <button class="nav-toggle" id="navToggle">☰</button>
   </nav>
 
-  <!-- Home Section -->
+  <!-- Mobile menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <ul>
+      <li><a href="#home" class="mobile-link">HOME</a></li>
+      <li><a href="#featured" class="mobile-link">FEATURED</a></li>
+      <li><a href="#games" class="mobile-link">GAMES</a></li>
+      <li><a href="#devblog" class="mobile-link">DEV BLOG</a></li>
+      <li><a href="#contact" class="mobile-link">CONTACT</a></li>
+    </ul>
+  </div>
+
+  <!-- ═══════════════ HERO SECTION ═══════════════ -->
   <section id="home">
-    <div class="container">
-      <div class="home-content">
-          <h2 id="home-title">Async Arcade</h2>
-          <p class="tagline" id="home-tagline">Where Ideas Become Adventures</p>
-          <p class="description" id="home-description">Where Ideas Become Adventures</p>
+    <div class="hero-bg-grid"></div>
+    <div class="hero-scanlines"></div>
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span class="badge-dot"></span>
+        INDIE GAME STUDIO
       </div>
-
-      <!-- Space Shooter Game -->
-      <div class="game-container">
-          <div class="side-container">
-              <!-- ad.asyncarcade.web.display.1 -->
-              <ins class="adsbygoogle"
-                  style="display:block"
-                  data-ad-client="ca-pub-7203042400179866"
-                  data-ad-slot="9406769340"
-                  data-ad-format="auto"
-                  data-full-width-responsive="true"></ins>
-              <script>
-                  (adsbygoogle = window.adsbygoogle || []).push({});
-              </script>
-
-              <!-- ad.asyncarcade.web.display.1 -->
-              <ins class="adsbygoogle"
-                  style="display:block"
-                  data-ad-client="ca-pub-7203042400179866"
-                  data-ad-slot="9406769340"
-                  data-ad-format="auto"
-                  data-full-width-responsive="true"></ins>
-              <script>
-                  (adsbygoogle = window.adsbygoogle || []).push({});
-              </script>
-          </div>
-
-          <div>
-            <h3>◆ TRY OUR MINI GAME ◆</h3>
-            <canvas id="spaceShooterCanvas"></canvas>
-          </div>
-
-          <div class="side-container">
-              <!-- ad.asyncarcade.web.display.1 -->
-              <ins class="adsbygoogle"
-                  style="display:block"
-                  data-ad-client="ca-pub-7203042400179866"
-                  data-ad-slot="9406769340"
-                  data-ad-format="auto"
-                  data-full-width-responsive="true"></ins>
-              <script>
-                  (adsbygoogle = window.adsbygoogle || []).push({});
-              </script>
-
-              <!-- ad.asyncarcade.web.display.1 -->
-              <ins class="adsbygoogle"
-                  style="display:block"
-                  data-ad-client="ca-pub-7203042400179866"
-                  data-ad-slot="9406769340"
-                  data-ad-format="auto"
-                  data-full-width-responsive="true"></ins>
-              <script>
-                  (adsbygoogle = window.adsbygoogle || []).push({});
-              </script>
-          </div>
+      <h1 class="hero-title" id="home-title">ASYNC<br><span class="title-outline">ARCADE</span></h1>
+      <p class="hero-tagline" id="home-tagline">Where Classic Gameplay Meets Modern Creativity</p>
+      <p class="hero-description" id="home-description">Independent game studio dedicated to creating skill-driven, memorable experiences.</p>
+      <div class="hero-cta-row">
+        <a href="#featured" class="btn-primary">EXPLORE GAMES</a>
+        <a href="#devblog" class="btn-ghost">READ DEV BLOG</a>
       </div>
-
+      <div class="hero-stats">
+        <div class="stat-item">
+          <span class="stat-number" id="stat-games">6</span>
+          <span class="stat-label">Games</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <span class="stat-number">2026</span>
+          <span class="stat-label">Est.</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <span class="stat-number">∞</span>
+          <span class="stat-label">Fun</span>
+        </div>
+      </div>
+    </div>
+    <div class="hero-scroll-hint">
+      <span>SCROLL</span>
+      <div class="scroll-line"></div>
     </div>
   </section>
 
-  <!-- Games Section -->
+  <!-- ═══════════════ AD BANNER (LEADERBOARD) ═══════════════ -->
+  <div class="ad-strip">
+    <div class="ad-label">ADVERTISEMENT</div>
+    <div class="ad-unit-wide">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-7203042400179866"
+           data-ad-slot="9406769340"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+  </div>
+
+  <!-- ═══════════════ FEATURED GAME SECTION ═══════════════ -->
+  <section id="featured">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">◆ SPOTLIGHT</span>
+        <h2 class="section-title">Featured Game</h2>
+      </div>
+      <div class="featured-card" id="featured-card">
+        <!-- Populated by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ MINI GAME ═══════════════ -->
+  <section id="minigame">
+    <div class="container">
+      <div class="minigame-layout">
+        <!-- Left Ad -->
+        <div class="ad-sidebar">
+          <div class="ad-label">ADVERTISEMENT</div>
+          <ins class="adsbygoogle"
+               style="display:block;width:160px;min-height:600px;"
+               data-ad-client="ca-pub-7203042400179866"
+               data-ad-slot="9406769340"
+               data-ad-format="auto"
+               data-full-width-responsive="false"></ins>
+          <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        </div>
+
+        <!-- Game -->
+        <div class="minigame-center">
+          <div class="section-header" style="text-align:center;">
+            <span class="section-tag">◆ INTERACTIVE</span>
+            <h2 class="section-title">Try The Mini Game</h2>
+            <p class="section-sub">Dodge asteroids. Move your mouse to fly.</p>
+          </div>
+          <div class="canvas-wrapper">
+            <canvas id="spaceShooterCanvas"></canvas>
+            <div class="canvas-corner tl"></div>
+            <div class="canvas-corner tr"></div>
+            <div class="canvas-corner bl"></div>
+            <div class="canvas-corner br"></div>
+          </div>
+          <p class="canvas-hint">🖱 Move cursor to steer · Auto-fire enabled · Click to rapid fire</p>
+        </div>
+
+        <!-- Right Ad -->
+        <div class="ad-sidebar">
+          <div class="ad-label">ADVERTISEMENT</div>
+          <ins class="adsbygoogle"
+               style="display:block;width:160px;min-height:600px;"
+               data-ad-client="ca-pub-7203042400179866"
+               data-ad-slot="9406769340"
+               data-ad-format="auto"
+               data-full-width-responsive="false"></ins>
+          <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ GAMES GRID ═══════════════ -->
   <section id="games">
     <div class="container">
-      <h2 class="section-title">Our Games</h2>
+      <div class="section-header">
+        <span class="section-tag">◆ PORTFOLIO</span>
+        <h2 class="section-title">All Games</h2>
+      </div>
+
+      <!-- Mid-content ad before grid -->
+      <div class="ad-inline">
+        <div class="ad-label">ADVERTISEMENT</div>
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-7203042400179866"
+             data-ad-slot="9406769340"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+      </div>
+
       <div class="games-grid" id="games-grid">
-        <!-- Game cards will be populated by JavaScript -->
+        <!-- Populated by JS -->
       </div>
     </div>
   </section>
 
-  <!-- Contact Section -->
+  <!-- ═══════════════ DEV BLOG SECTION ═══════════════ -->
+  <section id="devblog">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">◆ KNOWLEDGE</span>
+        <h2 class="section-title">Dev Blog</h2>
+        <p class="section-sub">Behind-the-scenes tutorials, design decisions, and game dev insights from the Async Arcade team.</p>
+      </div>
+
+      <div class="blog-layout">
+        <!-- Blog Articles -->
+        <div class="blog-main">
+
+          <!-- Article 1 -->
+          <article class="blog-article" id="article-territory">
+            <div class="article-meta">
+              <span class="article-tag">GAME DESIGN</span>
+              <span class="article-date">April 2026</span>
+            </div>
+            <h3 class="article-title">How We Built Territory Capture AI for Grid.io</h3>
+            <div class="article-img-wrap">
+              <img src="assets/gridio.png" alt="Grid.io" class="article-img" onerror="this.parentElement.style.display='none'">
+            </div>
+            <div class="article-body">
+              <p>Building multiplayer territory games presents a classic challenge: how do you make AI opponents feel intelligent without burning the CPU? In Grid.io, we handle 7 simultaneous AI agents, each running their own expansion logic at 60fps in the browser. Here's how we pulled it off.</p>
+              <h4>The Core Loop</h4>
+              <p>Each AI agent operates on a simple state machine: <strong>Expand → Capture → Defend</strong>. When an agent is safely inside its own territory, it explores outward. When it senses a rival trail is nearby, it either retreats or attempts a cut-off maneuver. The key insight was that <em>reactive behavior looks smarter than planned behavior</em> at this scale.</p>
+              <div class="code-block">
+                <div class="code-header"><span>ai-agent.js</span></div>
+                <pre><code>function decideDirection(agent, grid) {
+  const threat = detectNearestRival(agent, grid);
+  if (threat && threat.distance < DANGER_RADIUS) {
+    return evadeOrCutoff(agent, threat);
+  }
+  return expandGreedily(agent, grid);
+}</code></pre>
+              </div>
+              <h4>Flood Fill for Territory</h4>
+              <p>When a player closes a loop, we use a canvas-based flood fill starting from the center of the enclosed region. This runs in O(n) where n is the enclosed area, and on modern hardware it's imperceptible even for large captures. The animation — where the color washes across claimed cells — is simply the flood fill visualized in real time at 4 cells per frame.</p>
+              <h4>Performance Budget</h4>
+              <p>Each AI agent gets a 2ms CPU budget per frame. We use a simple priority queue so the most "active" agent (highest threat/opportunity score) gets computed first. If the budget runs out, remaining agents skip their decision and repeat their last direction. Players never notice because AI decisions are cheap and the game runs at 60fps.</p>
+              <div class="article-tip">
+                <span class="tip-icon">💡</span>
+                <strong>Tip:</strong> Flood fill territory validation is 10× faster when you maintain a dirty-rect list instead of scanning the full grid every frame.
+              </div>
+            </div>
+          </article>
+
+          <!-- Inline Ad between articles -->
+          <div class="ad-inline">
+            <div class="ad-label">ADVERTISEMENT</div>
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-7203042400179866"
+                 data-ad-slot="9406769340"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+          </div>
+
+          <!-- Article 2 -->
+          <article class="blog-article" id="article-typing">
+            <div class="article-meta">
+              <span class="article-tag">TUTORIAL</span>
+              <span class="article-date">March 2026</span>
+            </div>
+            <h3 class="article-title">Designing a Typing Game That Feels Great: Lessons from Asteroid Typer</h3>
+            <div class="article-img-wrap">
+              <img src="assets/asteroidtyper.png" alt="Asteroid Typer" class="article-img" onerror="this.parentElement.style.display='none'">
+            </div>
+            <div class="article-body">
+              <p>A typing game lives or dies on one thing: does every keystroke feel <em>meaningful</em>? In Asteroid Typer, each key you press fires a bullet. Miss a letter, miss the shot. This single design decision changed everything about how we structured the game's feedback loop.</p>
+              <h4>Word Selection Algorithm</h4>
+              <p>We curate words by length-to-difficulty ratio. Short words spawn on small asteroids (low threat, high speed). Long words appear on massive slow-moving rocks (high threat, forgiving pace). This creates a natural flow where players feel constantly busy but never overwhelmed — a state game designers call <em>flow state</em>.</p>
+              <div class="code-block">
+                <div class="code-header"><span>word-system.js</span></div>
+                <pre><code>function getWordForAsteroid(radius) {
+  const tier = Math.floor(radius / 10); // 0-3
+  const pools = [shortWords, medWords, hardWords, expertWords];
+  const pool = pools[Math.min(tier, 3)];
+  return pool[Math.floor(Math.random() * pool.length)];
+}</code></pre>
+              </div>
+              <h4>The Powerup Design Philosophy</h4>
+              <p>Each of our four powerups addresses a different player pain state. <strong>Time Warp</strong> helps when the screen is too crowded. <strong>Solar Flare</strong> clears when you're about to die. <strong>Breaker</strong> targets the single most stressful threat. <strong>Shield</strong> rewards players who are already doing well by removing the anxiety of one mistake ending the run.</p>
+              <h4>Procedural Difficulty Curve</h4>
+              <p>We model difficulty as a function of <em>sector number</em>: spawn rate increases by 12% per sector, minimum word length grows by 0.3 characters per sector, and asteroid speed scales by a square root curve (fast early gains, slower later). This creates the classic "easy to learn, hard to master" feel without any handcrafted level data.</p>
+              <div class="article-tip">
+                <span class="tip-icon">🎮</span>
+                <strong>Design Note:</strong> Never punish fast typists by spawning words faster than they can clear. Cap the simultaneous word count at 8 and let difficulty come from word complexity instead.
+              </div>
+            </div>
+          </article>
+
+          <!-- Inline Ad between articles -->
+          <div class="ad-inline">
+            <div class="ad-label">ADVERTISEMENT</div>
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-7203042400179866"
+                 data-ad-slot="9406769340"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+          </div>
+
+          <!-- Article 3 -->
+          <article class="blog-article" id="article-shooter">
+            <div class="article-meta">
+              <span class="article-tag">TECHNICAL</span>
+              <span class="article-date">February 2026</span>
+            </div>
+            <h3 class="article-title">Building a Bullet-Hell Shooter in Pure Canvas: Shoot.io Post-Mortem</h3>
+            <div class="article-img-wrap">
+              <img src="assets/shootio.png" alt="Shoot.io" class="article-img" onerror="this.parentElement.style.display='none'">
+            </div>
+            <div class="article-body">
+              <p>Shoot.io started as an experiment: how complex can a space shooter get before the HTML5 Canvas starts to choke? The answer surprised us. With careful batching and object pooling, we sustain 60fps with hundreds of simultaneous projectiles, enemies, and particle effects on mid-range mobile hardware.</p>
+              <h4>Object Pooling — The #1 Performance Win</h4>
+              <p>JavaScript's garbage collector is the enemy of smooth gameplay. Every time you create a new object with <code>new Bullet()</code> and then let it get collected, you risk a GC pause mid-game. Object pools pre-allocate a fixed number of objects at startup and recycle them. When a bullet "dies," it goes back to the pool. When a new bullet is needed, it's pulled from the pool and reset — no allocation, no collection.</p>
+              <div class="code-block">
+                <div class="code-header"><span>object-pool.js</span></div>
+                <pre><code>class ObjectPool {
+  constructor(factory, size = 100) {
+    this.pool = Array.from({ length: size }, factory);
+    this.active = [];
+  }
+  acquire() {
+    const obj = this.pool.pop() || this.factory();
+    this.active.push(obj);
+    return obj;
+  }
+  release(obj) {
+    const i = this.active.indexOf(obj);
+    if (i > -1) this.active.splice(i, 1);
+    obj.reset();
+    this.pool.push(obj);
+  }
+}</code></pre>
+              </div>
+              <h4>Canvas Draw Call Batching</h4>
+              <p>Instead of drawing each enemy individually (with separate <code>save()</code>, <code>translate()</code>, <code>restore()</code> calls), we group enemies by type and draw them in a single path where possible. For simple shapes like triangles and hexagons, this cuts draw calls by up to 70%. We also only call <code>clearRect</code> on dirty regions when performance is critical.</p>
+              <h4>Mobile Touch Controls</h4>
+              <p>Portrait-mode mobile games need horizontal drag controls that feel natural. We track the delta between touch start and current position, then apply it as a velocity rather than absolute position — this lets players steer without constantly re-anchoring their thumb. We add 15% easing so the ship glides rather than snapping.</p>
+              <div class="article-tip">
+                <span class="tip-icon">⚡</span>
+                <strong>Performance Tip:</strong> Profile your Canvas game with Chrome DevTools' Performance tab. The "Rendering" flame chart will show exactly which draw calls are eating your frame budget.
+              </div>
+            </div>
+          </article>
+
+        </div><!-- end blog-main -->
+
+        <!-- Sidebar -->
+        <aside class="blog-sidebar">
+          <div class="sidebar-sticky">
+            <!-- Ad unit -->
+            <div class="sidebar-ad">
+              <div class="ad-label">ADVERTISEMENT</div>
+              <ins class="adsbygoogle"
+                   style="display:block;min-height:250px;"
+                   data-ad-client="ca-pub-7203042400179866"
+                   data-ad-slot="9406769340"
+                   data-ad-format="auto"
+                   data-full-width-responsive="true"></ins>
+              <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            </div>
+
+            <!-- Quick links -->
+            <div class="sidebar-widget">
+              <h4 class="widget-title">Quick Links</h4>
+              <ul class="widget-list" id="blog-quick-links">
+                <li><a href="#article-territory">Territory AI in Grid.io →</a></li>
+                <li><a href="#article-typing">Typing Game Feel →</a></li>
+                <li><a href="#article-shooter">Canvas Performance →</a></li>
+              </ul>
+            </div>
+
+            <!-- Sidebar Ad 2 -->
+            <div class="sidebar-ad">
+              <div class="ad-label">ADVERTISEMENT</div>
+              <ins class="adsbygoogle"
+                   style="display:block;min-height:250px;"
+                   data-ad-client="ca-pub-7203042400179866"
+                   data-ad-slot="9406769340"
+                   data-ad-format="auto"
+                   data-full-width-responsive="true"></ins>
+              <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            </div>
+
+            <!-- Tags cloud -->
+            <div class="sidebar-widget">
+              <h4 class="widget-title">Topics</h4>
+              <div class="tag-cloud">
+                <span class="cloud-tag">Game Design</span>
+                <span class="cloud-tag">Canvas API</span>
+                <span class="cloud-tag">AI</span>
+                <span class="cloud-tag">Performance</span>
+                <span class="cloud-tag">Mobile</span>
+                <span class="cloud-tag">Procedural</span>
+                <span class="cloud-tag">HTML5</span>
+                <span class="cloud-tag">JavaScript</span>
+              </div>
+            </div>
+          </div>
+        </aside>
+
+      </div><!-- end blog-layout -->
+    </div>
+  </section>
+
+  <!-- ═══════════════ CONTACT ═══════════════ -->
   <section id="contact">
     <div class="container contact-container">
-      <h2 class="section-title" id="contact-title">Let's Create Together</h2>
-      <p class="contact-description" id="contact-description">
-        Have a project in mind? Want to collaborate? We'd love to hear from you!
-      </p>
-      <a href="#" class="contact-email" id="contact-email">asyncarcade@gmail.com</a>
-      <!-- div class="social-links" id="social-links">
-        <!-- Social links will be populated by JavaScript -->
-      <!-- /div>
+      <div class="section-header" style="text-align:center;">
+        <span class="section-tag light">◆ GET IN TOUCH</span>
+        <h2 class="section-title" id="contact-title">Let's Create Together</h2>
+        <p class="section-sub light" id="contact-description">Have a project in mind? Want to collaborate? We'd love to hear from you.</p>
+      </div>
+      <div class="contact-card">
+        <div class="contact-glow"></div>
+        <p class="contact-label">REACH US AT</p>
+        <a href="mailto:asyncarcade@gmail.com" class="contact-email" id="contact-email">asyncarcade@gmail.com</a>
+        <div class="contact-divider"></div>
+        <div id="social-links" class="social-links"></div>
+      </div>
     </div>
   </section>
 
   <!-- Footer -->
   <footer>
-    <p>&copy; 2026 <span id="footer-studio-name">Async Arcade</span>. All rights reserved.</p>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="assets/logo.svg" alt="Logo" class="footer-logo" onerror="this.style.display='none'">
+        <span id="footer-studio-name">Async Arcade</span>
+      </div>
+      <p class="footer-copy">&copy; 2026 Async Arcade. All rights reserved. Crafted with ♥ for gamers.</p>
+      <div class="footer-links">
+        <a href="#home">Home</a>
+        <a href="#games">Games</a>
+        <a href="#devblog">Blog</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
   </footer>
 
   <!-- Scripts -->
