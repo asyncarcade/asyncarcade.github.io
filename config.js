@@ -27,51 +27,16 @@ const CONFIG = {
     // Games Portfolio
     games: [
         {
-            id: 1,
-            title: "Dash Blitz",
-            description: "DashBlitz is an arcade fun dash-to-kill game. It is a survival game where you get the privilege of completing levels or play endlessly to see how far you can get without dying. Have fun and sharpen your dashing skills while passing your time.",
-            thumbnail: "assets/dashblitz.png",
-            status: "Released on Web",
-            platforms: ["Web (Async Arcade)"],
+            title: "Block.io Cube Arena",
+            description: "Enter the world of Block.io Cube Arena, a highly satisfying and strategic territory capture game inspired by classic io gameplay! Expand your area, outplay opponents, and dominate the arena with smart moves and fast decisions.",
+            thumbnail: "assets/gridio.jpeg",
+            status: "Released on Android",
+            platforms: ["PlayStore"],
+            url: "https://play.google.com/store/apps/details?id=com.asyncarcade.gridio",
             releaseDate: "2026",
-            url: "https://asyncarcade.github.io/dashblitz",
-            tags: ["Casual", "Arcade", "Survival"]
+            tags: ["Block", "IO", "Cube", "Arena", "Strategy", "Survival", "Casual"]
         },
         {
-            id: 2,
-            title: "SkyDrift",
-            description: "SkyDrift is an arcade skydiving survival game. Control your falling diver by toggling your parachute and drifting sideways to dodge a relentless gauntlet of obstacles — spinning rocks, sliding doors, firing cannons, and deadly lasers. Collect powerups like shields, rockets, and dash charges to survive longer and fall further. How deep can you go?",
-            thumbnail: "assets/skydrift.png",
-            status: "Released on Web",
-            platforms: ["Web (Async Arcade)"],
-            releaseDate: "2026",
-            url: "https://asyncarcade.github.io/skydrift",
-            tags: ["Casual", "Arcade", "Survival"]
-        },
-        {
-            id: 3,
-            title: "Shoot.io",
-            description: "Shoot.io is a portrait-mode space shooter built for web and mobile. Pilot a glowing ship through waves of escalating alien threats — fast-moving triangles, armored hexagons, massive diamonds, and screen-filling boss stars — by dragging left and right to dodge and reposition. Your ship fires automatically; collect powerups to multiply your fire rate, gain shields, earn extra lives, or arm yourself with area-damage bombs. Enemies grow faster and tougher with every wave. Synthesized sound effects, particle explosions with shockwave rings, and a soft nebula backdrop make every kill feel visceral. How long can you hold the cosmos?",
-            thumbnail: "assets/shootio.png",
-            status: "Released on Web",
-            platforms: ["Web", "Mobile"],
-            releaseDate: "2026",
-            url: "https://asyncarcade.github.io/shoot.io",
-            tags: ["Shooter", "Arcade", "Survival", "Mobile"]
-        },
-        {
-            id: 4,
-            title: "Grid.io",
-            description: "Grid.io is a browser-based multiplayer territory game inspired by Paper.io. Control your colored player across a vast 2D grid arena, leaving trails to carve out loops and claim enclosed territory. Outmaneuver 7 AI rivals — each running intelligent expansion routines — by cutting off their trails while protecting your own. Captures trigger satisfying area-flood animations and synthesized sound effects. How much of the grid can you dominate?",
-            thumbnail: "assets/gridio.png",
-            status: "Released on Web",
-            platforms: ["Web"],
-            releaseDate: "2026",
-            url: "https://asyncarcade.github.io/grid.io",
-            tags: ["Multiplayer", "Arcade", "Strategy", "Survival"]
-        },
-        {
-            id: 5,
             title: "Asteroid Typer",
             description: "Asteroid Typer is a browser-based typing game where waves of procedurally spawned asteroids — sized proportionally to their words — hurtle toward your ship. Type each word to lock on, fire bullets with every keystroke, and detonate rocks on completion. Outpace an escalating difficulty curve across 10 sectors as spawn rates and word complexity ramp from calm drifts to frantic swarms. Four powerups reward sharp typing: Time Warp slows the field, Solar Flare blasts everything skyward, Breaker splits the largest threat, and Shield restores hull integrity. A dynamic nebula shifts from cool blue to burning red as the pressure mounts.",
             thumbnail: "assets/asteroidtyper.png",
@@ -82,25 +47,63 @@ const CONFIG = {
             tags: ["Typing", "Arcade", "Action", "Survival"]
         },
         {
-            id: 6,
-                title: "Cricket Cube",
-                description: "Cricket Cube is a fast-paced top-down cricket game featuring casual yet thrilling skill-based gameplay. Swipe to play dynamic cricket shots across the ground or aim precisely to knock down the stumps in action-packed challenges. With intuitive controls and competitive mechanics, every move tests your timing, reflexes, and strategic decision-making.",
-                thumbnail: "assets/minicricket.png",
-                status: "In Development",
-                platforms: ["PlayStore"],
-                releaseDate: "2026",
-                tags: ["Sports", "Cricket", "Casual"]
+            title: "SkyDrift",
+            description: "SkyDrift is an arcade skydiving survival game. Control your falling diver by toggling your parachute and drifting sideways to dodge a relentless gauntlet of obstacles — spinning rocks, sliding doors, firing cannons, and deadly lasers. Collect powerups like shields, rockets, and dash charges to survive longer and fall further. How deep can you go?",
+            thumbnail: "assets/skydrift.png",
+            status: "Released on Web",
+            platforms: ["Web (Async Arcade)"],
+            releaseDate: "2026",
+            url: "https://asyncarcade.github.io/skydrift",
+            tags: ["Casual", "Arcade", "Survival"]
         },
         {
-            id: 7,
-            title: "Bounce Adventure : Pogo Mania",
-            description: "Bounce Adventure: Pogo Mania is a fun and addictive vertical platformer focused on mastering jump timing and directional control. Carefully time each bounce, adjust your movement mid-air, and land perfectly on platforms as you climb higher and higher. Precision, rhythm, and smart positioning are the keys to reaching the top in this exciting pogo-powered adventure.",
-            thumbnail: "assets/bounce.png",
-            status: "In Development",
-            platforms: ["PlayStore"],
+            title: "Shoot.io",
+            description: "Shoot.io is a portrait-mode space shooter built for web and mobile. Pilot a glowing ship through waves of escalating alien threats — fast-moving triangles, armored hexagons, massive diamonds, and screen-filling boss stars — by dragging left and right to dodge and reposition. Your ship fires automatically; collect powerups to multiply your fire rate, gain shields, earn extra lives, or arm yourself with area-damage bombs. Enemies grow faster and tougher with every wave. Synthesized sound effects, particle explosions with shockwave rings, and a soft nebula backdrop make every kill feel visceral. How long can you hold the cosmos?",
+            thumbnail: "assets/shootio.png",
+            status: "Released on Web",
+            platforms: ["Web", "Mobile"],
             releaseDate: "2026",
-            tags: ["Arcade", "Platformer", "Casual"]
+            url: "https://asyncarcade.github.io/shoot.io",
+            tags: ["Shooter", "Arcade", "Survival", "Mobile"]
         },
+        {
+            title: "Grid.io",
+            description: "Grid.io is a browser-based multiplayer territory game inspired by Paper.io. Control your colored player across a vast 2D grid arena, leaving trails to carve out loops and claim enclosed territory. Outmaneuver 7 AI rivals — each running intelligent expansion routines — by cutting off their trails while protecting your own. Captures trigger satisfying area-flood animations and synthesized sound effects. How much of the grid can you dominate?",
+            thumbnail: "assets/gridio.png",
+            status: "Released on Web",
+            platforms: ["Web"],
+            releaseDate: "2026",
+            url: "https://asyncarcade.github.io/grid.io",
+            tags: ["Multiplayer", "Arcade", "Strategy", "Survival"]
+        },
+        {
+            title: "Dash Blitz",
+            description: "DashBlitz is an arcade fun dash-to-kill game. It is a survival game where you get the privilege of completing levels or play endlessly to see how far you can get without dying. Have fun and sharpen your dashing skills while passing your time.",
+            thumbnail: "assets/dashblitz.png",
+            status: "Released on Web",
+            platforms: ["Web (Async Arcade)"],
+            releaseDate: "2026",
+            url: "https://asyncarcade.github.io/dashblitz",
+            tags: ["Casual", "Arcade", "Survival"]
+        },
+        // {
+        //     title: "Cricket Cube",
+        //     description: "Cricket Cube is a fast-paced top-down cricket game featuring casual yet thrilling skill-based gameplay. Swipe to play dynamic cricket shots across the ground or aim precisely to knock down the stumps in action-packed challenges. With intuitive controls and competitive mechanics, every move tests your timing, reflexes, and strategic decision-making.",
+        //     thumbnail: "assets/minicricket.png",
+        //     status: "In Development",
+        //     platforms: ["PlayStore"],
+        //     releaseDate: "2026",
+        //     tags: ["Sports", "Cricket", "Casual"]
+        // },
+        // {
+        //     title: "Bounce Adventure : Pogo Mania",
+        //     description: "Bounce Adventure: Pogo Mania is a fun and addictive vertical platformer focused on mastering jump timing and directional control. Carefully time each bounce, adjust your movement mid-air, and land perfectly on platforms as you climb higher and higher. Precision, rhythm, and smart positioning are the keys to reaching the top in this exciting pogo-powered adventure.",
+        //     thumbnail: "assets/bounce.png",
+        //     status: "In Development",
+        //     platforms: ["PlayStore"],
+        //     releaseDate: "2026",
+        //     tags: ["Arcade", "Platformer", "Casual"]
+        // },
     ],
 
 
